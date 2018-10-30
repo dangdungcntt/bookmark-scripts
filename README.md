@@ -25,7 +25,7 @@ javascript:var getRandomNumber = (max, min = 0) => { return Math.floor((max - mi
 javascript: var a = prompt('URL'); if (a) var b = prompt('ENCODED URL', encodeURIComponent(a));
 ```
 
-6. ENCODE URL
+6. DECODE URL
 ```javascript
 javascript: var a = prompt('ENCODED URL'); if (a) var b = prompt('URL', decodeURIComponent(a));
 ```
