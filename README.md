@@ -30,6 +30,11 @@ javascript: var a = prompt('URL'); if (a) var b = prompt('ENCODED URL', encodeUR
 javascript: var a = prompt('ENCODED URL'); if (a) var b = prompt('URL', decodeURIComponent(a));
 ```
 
+7. MD5
+```javascript
+javascript: var a = prompt('Input'); if (a) { var formData = new FormData(); formData.append('secret', a); fetch('https://cors-anywhere.herokuapp.com/http://md5generator.net', {method: 'post', body: formData}) .then(response => response.text()) .then(html => { var start = html.indexOf('<div id="hash">') + 15; var b = prompt('MD5 of ' + a, html.substr(start, 32)); }); }
+```
+
 99. GET FB ID
 ```javascript
 javascript: if(!(-1===location.pathname.indexOf('/events/')))var a=prompt('ID',location.pathname.match(/\d+/g)[0]);else if(document.querySelector('.coverWrap'))var id=document.querySelector('.coverWrap').getAttribute('data-referrerid'),a=prompt('ID',id);else{var check=!1;try{for(var metas=document.getElementsByTagName('meta'),i=0;i<metas.length;i++)if(!!metas[i]&&'al:ios:url'==metas[i].getAttribute('property')){var id=metas[i].getAttribute('content').toString().match(/\d+/g)[0];id.length&&(check=!0),prompt('ID',id)}}catch(b){}if(!check)var a=alert('Cannot GET FBID, Reload and try again')}
