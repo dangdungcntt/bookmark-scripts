@@ -35,6 +35,33 @@ javascript: var a = prompt('ENCODED URL'); if (a) var b = prompt('URL', decodeUR
 javascript: var a = prompt('Input'); if (a) { var formData = new FormData(); formData.append('secret', a); fetch('https://cors-anywhere.herokuapp.com/http://md5generator.net', {method: 'post', body: formData}) .then(response => response.text()) .then(html => { var start = html.indexOf('<div id="hash">') + 15; var b = prompt('MD5 of ' + a, html.substr(start, 32)); }); }
 ```
 
+8. MongoDB ObjectId to Date
+```javascript
+javascript: var dateFromObjectId = function (objectId) { return new Date(parseInt(objectId.substring(0, 8), 16) * 1000); }; var a = prompt('OBJECT ID'); if (a) var b = prompt('DATE', dateFromObjectId(a).toISOString());
+```
+
+9. Json attributes to MongoDB ObjectId
+
+`{timestamp, machine_identifier, process_identifier, counter}` => ObjectId
+```javascript
+javascript:(function() {    function pad(str, length) {return str.length == length ? str : '00' + str}     function toObjectId({timestamp, machine_identifier, process_identifier, counter}) {        return timestamp.toString(16) + pad(machine_identifier.toString(16), 6) + pad(process_identifier.toString(16), 4) + pad(counter.toString(16), 6)}    var a = prompt('Input data'); if (!a) return;    var b = prompt('ObjectID', toObjectId(JSON.parse(a)));})()
+```
+
+10. toLowerCase
+```javascript
+javascript: var a = prompt('Input String'); if (a) { var b = prompt('Output', a.toLowerCase()); }
+```
+
+11. toUpperCase
+```javascript
+javascript: var a = prompt('Input String'); if (a) { var b = prompt('Output', a.toUpperCase()); }
+```
+
+12. toSnackCase
+```javascript
+javascript: var a = prompt('Input String'); if (a) { var b = prompt('Output', a.split(/(?=[A-Z])/).join('_').toLowerCase()); }
+```
+
 99. GET FB ID
 ```javascript
 javascript: if(!(-1===location.pathname.indexOf('/events/')))var a=prompt('ID',location.pathname.match(/\d+/g)[0]);else if(document.querySelector('.coverWrap'))var id=document.querySelector('.coverWrap').getAttribute('data-referrerid'),a=prompt('ID',id);else{var check=!1;try{for(var metas=document.getElementsByTagName('meta'),i=0;i<metas.length;i++)if(!!metas[i]&&'al:ios:url'==metas[i].getAttribute('property')){var id=metas[i].getAttribute('content').toString().match(/\d+/g)[0];id.length&&(check=!0),prompt('ID',id)}}catch(b){}if(!check)var a=alert('Cannot GET FBID, Reload and try again')}
