@@ -2,7 +2,7 @@
 
 1. SHORTURL
 ```javascript
-javascript: var a = prompt('Url'); if(a) window.open('https://stlink.xyz/.netlify/functions/generate-route?to=' + a, '_blank');
+javascript: var a = prompt('Url', location.href); if(a) var b = window.open('https://tinyurl.com/create.php?url='+encodeURIComponent(a), '_blank');
 ```
 
 2. FB VIDEO URL
